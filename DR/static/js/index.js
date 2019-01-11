@@ -1,5 +1,3 @@
-
-
 $(function(){
 
 	// 主页背景图片
@@ -23,7 +21,7 @@ $(function(){
 		}else{
 			$('.floor').slideUp(1000);
 		}
-	})
+	});
 
 
 
@@ -42,7 +40,7 @@ $(function(){
 				}
 				$('.allCity').append($('<span>'+json[0][i].city+'</span>'));
 			}
-	})
+	});
 
 	// 城市联动动画效果
 	$('.drstore-tab li').on('mouseenter',function(){
@@ -53,7 +51,7 @@ $(function(){
 		$('img.line').stop().animate({'left':75+($(this).width()+48)*($(this).index()-1)})
 		$('.drstore-tab p').hide().css('opacity',0);
 		$(this).find('p').show().animate({'opacity':1},800)
-	})
+	});
 
 
 
@@ -76,7 +74,7 @@ $(function(){
 							function(){
 							$(this).find('.block_dl').css('display','none');
 						}
-			)
+			);
 
 
 			// 导航栏二 pro_nav
@@ -114,11 +112,11 @@ $(function(){
 				$('img.line').stop().animate({'left':20+$(this).width()*($(this).index()-1)},300)
 				$('.tab_class p').hide().css('opacity',0);//先让之前的都隐藏起来，并且透明度为0
 				$(this).find('p').stop().show().animate({'opacity':1},800);//让当前划过的标签显示
-			})
+			});
 
 			// 导航栏五 右边
 			var i = 0;
-			var timer = setInterval(move,2000)
+			var timer = setInterval(move,2000);
 
 				function move(){
 				if(i<=3){

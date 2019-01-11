@@ -1,7 +1,7 @@
 $(function () {
     $("img").each(function () {
         // 路径
-        var imgPath = $(this).attr('src').slice(19);
+        var imgPath = $(this).attr('src').slice(0);
 
         // 拼接
         // {% static 'img/research_ico.png' %}

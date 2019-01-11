@@ -23,7 +23,13 @@
 			<div class="header_cen_rg">
 				<div class="header_cen_rg_top">
 					<ul>
-						<li class="dl">登录</li>
+                        {% if name %}
+                            <a href="#"><li >{{ name }}</li></a>
+                            <a href="{% url 'dr:logout' %}"><li >logout</li></a>
+                        {% else %}
+                            <a href="{% url 'dr:login' %}"><li class="dl">登录</li></a>
+                        {% endif %}
+
 						<li class="join"><a href="#">加入DR族</a></li>
 						<li class="num"> 400 01 13520</li>
 						<li class="mobile">DR族APP
@@ -101,11 +107,12 @@
 							<img src="{% static 'images/20150129114316f8a2465758.jpg' %}" alt="">
 						</div>
 						<ul>
-							<!-- <li>对戒</li>
-							<li>男戒</li>
+{#                            #}
+							<li>对戒</li>
+                            <li>男戒</li>
 							<li>吊坠</li>
 							<li>耳饰</li>
-							<li>手链/手镯</li> -->
+							<li>手链/手镯</li>
 						</ul>
 					</div>
 				</div>
@@ -153,6 +160,10 @@
 								<span><a href="#">上海</a></span>
 								<span><a href="#">上海</a></span>
 								<span><a href="#">更多</a></span> -->
+                                    <span><a href="#">上海</a></span>
+								<span><a href="#">上海</a></span>
+								<span><a href="#">上海</a></span>
+								<span><a href="#">上海</a></span>
 								</p>
 							</li>
 							<li>
@@ -163,6 +174,9 @@
 								<span><a href="#">上海</a></span>
 								<span><a href="#">上海</a></span>
 								<span><a href="#">更多</a></span> -->
+                                    <span><a href="#">上海1</a></span>
+								<span><a href="#">上海</a></span>
+								<span><a href="#">上海</a></span>
 								</p>
 							</li>
 							<li>
@@ -173,6 +187,9 @@
 								<span><a href="#">上海</a></span>
 								<span><a href="#">上海</a></span>
 								<span><a href="#">更多</a></span> -->
+                                    <span><a href="#">上海2</a></span>
+								<span><a href="#">上海</a></span>
+								<span><a href="#">上海</a></span>
 								</p>
 							</li>
 							<li>
@@ -400,41 +417,12 @@
 			</div>
 
 			<!-- dr_dring -->
-			<div class="dr_dring">
-				<div class="same_bg-two">
-					<a href="goodlist.html"><img src="{% static 'images/icon_ring.png' %}" alt=""></a>
-				</div>
-				<div class="drlife">
-					<img src="{% static 'images/onelife.png' %}" alt="">
-					<p>更多商品&gt;&gt;</p>
-				</div>
-
-				<div class="drsame_img w1000">
-					<div class="dl">
-						<a href="goodlist.html"><img class="t1" src="{% static '' %}" alt=""></a>
-					</div>
-					<div class="dr">
-						<a href="goodlist.html"><img class="t1" src="{% static '' %}" alt=""></a>
-						<a href="goodlist.html"><img class="t1" src="{% static '' %}" alt=""></a>
-					</div>
-				</div>
-
-				<div class="drsame_img w1000">
-					<div class="dl">
-						<a href="goodlist.html"><img class="t2" src="{% static '' %}" alt=""></a>
-						<a href="goodlist.html"><img class="t2" src="{% static '' %}" alt=""></a>
-					</div>
-					<div class="dr">
-						<a href="goodlist.html"><img class="t2" src="{% static '' %}" alt=""></a>
-					</div>
-				</div>
-
-			</div>
+			<div class="dr_dring">{% url 'dr:goodlist' %}</div>
 
 
 			<div class="dr_dring">
 				<div class="same_bg-two">
-					<a href="goodlist.html"><img src="{% static 'images/icon_lt.png' %}" alt=""></a>
+					<a href="{% url 'dr:goodlist' %}"><img src="{% static 'images/icon_lt.png' %}" alt=""></a>
 				</div>
 				<div class="drlife">
 					<img src="{% static 'images/twolife.png' %}" alt="">

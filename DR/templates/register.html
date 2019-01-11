@@ -54,19 +54,22 @@
 			<li class="Email">邮箱注册</li>
 		</ul>
 		<div class="register_cont_phone">
-			<form action="" id="registerform" method="post">
-				<div class="info">1111</div>
-				<input class="user" id="" type="text" placeholder="请您输入您注册的手机号码">
-				<input class="pwd" id="" type="password" placeholder="请输入长度为6-20位数的密码">
+			<form action="{% url 'dr:register' %}" id="registerform" method="post">
+				{% csrf_token %}
+                <div class="info">1111</div>
+				<input class="user" name="name" id="" type="text" placeholder="请您输入您注册的手机号码">
+				<input class="pwd" name="pwd" id="" type="password" placeholder="请输入长度为6-20位数的密码">
 				<input class="checkPwd" id="" type="password" placeholder="请再次确认密码">
-				<input type="text" id="checkVoiceNum_phone" placeholder="输入验证码">
-				<span>获取语音验证码</span>
+{#				<input type="text" id="checkVoiceNum_phone" placeholder="输入验证码">#}
+{#				<span>获取语音验证码</span>#}
 				<input type="text" id="checkNum_phone" placeholder="请输入验证码">
 				<input type="button" id="getCheckNum_phone" value="YJ3E">
 				<input type="checkbox" id="agree_phone">
 				<label for="agree_phone">同意Darry Ring用户<i>注册协议</i>和<i>隐私条款</i></label>
 				<div class="btn">
-					<a class="joindr">立刻加入DR族</a>
+{#					<a class="joindr">立刻加入DR族</a>#}
+{#                    <input class="joindr" type="submit" value="立刻加入DR族">#}
+                    <input class="joindr" type="submit" value="立刻加入DR族">
 				</div>
 			</form>
 
@@ -80,7 +83,8 @@
 		</div>
 
 		<div class="register_cont_mail">
-			<form action="" id="registerform" method="post">
+			<form action="{% url 'dr:register' %}" id="registerform" method="post">
+                {% csrf_token %}
 				<div class="info"></div>
 				<input class="user" id="" type="text" placeholder="请输入您的邮箱地址">
 				<input class="pwd" id="" type="password" placeholder="请输入长度为6-20位数的密码">
@@ -91,7 +95,7 @@
 				<input type="checkbox" id="agree_mail" checked="checked">
 				<label for="agree_mail">同意Darry Ring用户<i>注册协议</i>和<i>隐私条款</i></label>
 				<div class="btn">
-					<a class="joindr regBtn">立刻加入DR族</a>
+					<a class="joindr regBtn"><input type="submit" value="立刻加入DR族"></a>
 				</div>
 			</form>
 

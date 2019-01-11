@@ -7,7 +7,7 @@ $(function () {
             },500);
 
         show = function () {
-            num %= 4 ;
+            num %= 5 ;
             var imgsrc = $('#list img').attr('src',"/static/images/2016-"+ String((num+1))+".jpg");
         };
 
@@ -24,7 +24,7 @@ $(function () {
 
         $("#pre").click(
             function () {
-                num += 3;
+                num += 4;
             show();
             }
         );
