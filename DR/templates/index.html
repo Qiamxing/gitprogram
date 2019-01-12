@@ -11,7 +11,7 @@
 	<script src="{% static 'js/mask.js' %}"></script>
 	<script src="{% static 'js/banner.js' %}"></script>
 	<script src="{% static 'js/jquery.cookie.js' %}"></script>
-    <script src="{% static 'js/slideshow.js' %}"></script>
+
 </head>
 <body>
 <!-- 头部 -->
@@ -52,7 +52,7 @@
 					</ul>
 				</div>
 				<div class="header_cen_rg_bot">
-					<img src="{% static 'images/drz.png' %}" alt="">
+					<img src="{% static 'images/drus  vccmcdsmdsijhdhf     mrz.png' %}" alt="">
 					<div class="info">
 						<select name="" id="">
 							<option value="中国大陆" selected="selected">中国大陆</option>
@@ -210,6 +210,11 @@
 								<span><a href="#">上海</a></span>
 								<span><a href="#">上海</a></span>
 								<span><a href="#">更多</a></span> -->
+                                    <span><a href="#">4</a></span>
+								<span><a href="#">上海4</a></span>
+								<span><a href="#">上海</a></span>
+								<span><a href="#">上海</a></span>
+								<span><a href="#">更多</a></span>
 								</p>
 							</li>
 							<li>更多&gt;&gt;</li>
@@ -267,10 +272,10 @@
         </ul>
 
 		<ul id="list2">
-				<!-- <li class='active'>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li> -->
+{#				 <li class='active'>1</li>#}
+{#				<li>2</li>#}
+{#				<li>3</li>#}
+{#				<li>4</li>#}
 		</ul>
 
 			<div id="pre"><a href="#1"><img src="{% static 'images/leftbig.png' %}" alt=""></a></div>
@@ -282,9 +287,9 @@
 	<!-- dr_advertisement-all -->
 	<div class="dr_advertisement-all">
 		<ul class="w1000">
-			<li><a href="#"><img src="{% static 'images/c1.jpg' %}" alt=""></a></li>
-			<li><a href="#"><img src="{% static 'images/c2.jpg' %}" alt=""></a></li>
-			<li><a href="#"><img src="{% static 'images/c3.jpg' %}" alt=""></a></li>
+			<li><a href="{% url 'dr:goodsinfo' %}"><img src="{% static 'images/c1.jpg' %}" alt=""></a></li>
+			<li><a href="{% url 'dr:goodsinfo' %}"><img src="{% static 'images/c2.jpg' %}" alt=""></a></li>
+			<li><a href="{% url 'dr:goodsinfo' %}"><img src="{% static 'images/c3.jpg' %}" alt=""></a></li>
 		</ul>
 	</div>
 	<!-- dr_advertisement-all -->
@@ -307,7 +312,7 @@
 				<p>全球浪漫真爱恋人的完美之选，社会名人倾情推荐，每个人都有追爱的勇气。</p>
 				<p>#我是DR族#数以万计的Darry Ring忠诚粉丝以爱为信仰，</p>
 				<p>他们聚集成DR族，<b>一生只爱一人。</b></p>
-				<p><a href="#"><span>立即选购</span><img src="{% static 'images/black_icon.png' %}" alt=""></a></p>
+				<p><a href="{% url 'dr:goodlist' %}"><span>立即选购</span><img src="{% static 'images/black_icon.png' %}" alt=""></a></p>
 			</div>
 		</div>
 	</div>
@@ -417,11 +422,47 @@
 			</div>
 
 			<!-- dr_dring -->
-			<div class="dr_dring">{% url 'dr:goodlist' %}</div>
+            {#                最经典的求婚钻戒#}
+			<div class="dr_dring">
+                <div class="same_bg-two">
+
+                        <a href="{% url 'dr:goodlist' %}"><img src="{% static 'images/icon_ring.png' %}" alt=""></a>
+                    </div>
+                    <div class="drlife">
+                        <img src="{% static 'images/twolife.png' %}" alt="">
+                        <p>更多商品&gt;&gt;</p>
+                    </div>
+                    <div class="drsame_img w1000">
+                        <div class="dl">
+    {#                        emmm ｍｏｍｏｎｇｑｉｍ　#}
+                            <a href="#"><img class="t1" src="{% static '' %}" alt=""></a>
+                        </div>
+                        <div class="dr">
+
+                            <a href="#"><img class="t1" src="{% static '' %}" alt=""></a>
+                            <a href="#"><img class="t1" src="{% static '' %}" alt=""></a>
+                        </div>
+                    </div>
+
+                    <div class="drsame_img w1000">
+                        <div class="dl">
+                            <a href="{% url 'dr:goodlist' %}"><img class="t2" src="{% static 'images/201605120949135df716e519.jpg
+                            ' %}" alt=""></a>
+                            <a href="{% url 'dr:goodlist' %}"><img class="t2" src="{% static '' %}" alt=""></a>
+                        </div>
+                        <div class="dr">
+                            <a href="{% url 'dr:goodlist' %}"><img class="t2" src="{% static '' %}" alt=""></a>
+                            <a href="{% url 'dr:goodlist' %}"><img class="t2" src="{% static '' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 			<div class="dr_dring">
+
 				<div class="same_bg-two">
+
 					<a href="{% url 'dr:goodlist' %}"><img src="{% static 'images/icon_lt.png' %}" alt=""></a>
 				</div>
 				<div class="drlife">
@@ -431,22 +472,24 @@
 
 				<div class="drsame_img w1000">
 					<div class="dl">
-						<a href="goodlist.html"><img class="t3" src="{% static '' %}" alt=""></a>
+{#                        emmm ｍｏｍｏｎｇｑｉｍ　#}
+						<a href="#"><img class="t3" src="{% static '' %}" alt=""></a>
 					</div>
 					<div class="dr">
-						<a href="goodlist.html"><img class="t3" src="{% static '' %}" alt=""></a>
-						<a href="goodlist.html"><img class="t3" src="{% static '' %}" alt=""></a>
+
+						<a href="#"><img class="t3" src="{% static '' %}" alt=""></a>
+						<a href="#"><img class="t3" src="{% static '' %}" alt=""></a>
 					</div>
 				</div>
 
 				<div class="drsame_img w1000">
 					<div class="dl">
-						<a href="goodlist.html"><img class="t4" src="{% static '' %}" alt=""></a>
-						<a href="goodlist.html"><img class="t4" src="{% static '' %}" alt=""></a>
+						<a href="{% url 'dr:goodlist' %}"><img class="t4" src="{% static '' %}" alt=""></a>
+						<a href="{% url 'dr:goodlist' %}"><img class="t4" src="{% static '' %}" alt=""></a>
 					</div>
 					<div class="dr">
-						<a href="goodlist.html"><img class="t4" src="{% static '' %}" alt=""></a>
-						<a href="goodlist.html"><img class="t4" src="{% static '' %}" alt=""></a>
+						<a href="{% url 'dr:goodlist' %}"><img class="t4" src="{% static '' %}" alt=""></a>
+						<a href="{% url 'dr:goodlist' %}"><img class="t4" src="{% static '' %}" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -461,9 +504,9 @@
 			</div>
 
 			<div class="dr_storeCon">
-				<a href="#"><img src="{% static 'images/201605241429181230fbb4e0.jpg' %}" alt=""></a>
-				<a href="#"><img src="{% static 'images/201605241430124b8d8f7d11.jpg' %}" alt=""></a>
-				<a href="#"><img src="{% static 'images/2016052414305878c82bc1be.jpg' %}" alt=""></a>
+				<a href="{% url 'dr:goodlist' %}"><img src="{% static 'images/201605241429181230fbb4e0.jpg' %}" alt=""></a>
+				<a href="{% url 'dr:goodlist' %}"><img src="{% static 'images/201605241430124b8d8f7d11.jpg' %}" alt=""></a>
+				<a href="{% url 'dr:goodlist' %}"><img src="{% static 'images/2016052414305878c82bc1be.jpg' %}" alt=""></a>
 				<p>更多明星推荐&gt;&gt;</p>
 			</div>
 

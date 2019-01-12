@@ -1,18 +1,18 @@
 [
 	{
-		"img": "images/2016-1.jpg",
+		"img": "static/images/2016-1.jpg",
 		"id": 1
 	},
 	{
-		"img": "images/2016-2.jpg",
+		"img": "static/images/2016-2.jpg",
 		"id": 2
 	},
 	{
-		"img": "images/2016-3.jpg",
+		"img": "static/images/2016-3.jpg",
 		"id": 3
 	},
 	{
-		"img": "images/2016-4.jpg",
+		"img": "static/images/2016-4.jpg",
 		"id": 4
 	}
 ]

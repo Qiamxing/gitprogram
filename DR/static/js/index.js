@@ -1,3 +1,5 @@
+
+
 $(function(){
 
 	// 主页背景图片
@@ -21,13 +23,13 @@ $(function(){
 		}else{
 			$('.floor').slideUp(1000);
 		}
-	});
+	})
 
 
 
 	// $('.allCity').empty()
 	// 获取 cityJSON 数据
-	$.getJSON("json/city.json",function(json){
+	$.getJSON("static/json/city.json",function(json){
 
 			//先遍历整个JSON，每一个数组都是一个li，然后遍历该数组对象
 			for(var i=0;i<json.length;i++){
@@ -40,7 +42,7 @@ $(function(){
 				}
 				$('.allCity').append($('<span>'+json[0][i].city+'</span>'));
 			}
-	});
+	})
 
 	// 城市联动动画效果
 	$('.drstore-tab li').on('mouseenter',function(){
@@ -51,12 +53,12 @@ $(function(){
 		$('img.line').stop().animate({'left':75+($(this).width()+48)*($(this).index()-1)})
 		$('.drstore-tab p').hide().css('opacity',0);
 		$(this).find('p').show().animate({'opacity':1},800)
-	});
+	})
 
 
 
 
-		$.getJSON("json/index.json",function(json){
+		$.getJSON("static/json/index.json",function(json){
 
 			dl_nav = $('#nav li.dl_nav');//1
 			pro_nav = $('#nav li.pro_nav');//2
@@ -74,7 +76,7 @@ $(function(){
 							function(){
 							$(this).find('.block_dl').css('display','none');
 						}
-			);
+			)
 
 
 			// 导航栏二 pro_nav
@@ -112,11 +114,11 @@ $(function(){
 				$('img.line').stop().animate({'left':20+$(this).width()*($(this).index()-1)},300)
 				$('.tab_class p').hide().css('opacity',0);//先让之前的都隐藏起来，并且透明度为0
 				$(this).find('p').stop().show().animate({'opacity':1},800);//让当前划过的标签显示
-			});
+			})
 
 			// 导航栏五 右边
 			var i = 0;
-			var timer = setInterval(move,2000);
+			var timer = setInterval(move,2000)
 
 				function move(){
 				if(i<=3){
@@ -281,7 +283,7 @@ $(function(){
 
 	/*轮播图*/
 	// 1.获取数据
-	$.get('json/lunbo.json',function(data){
+	$.get('static/json/lunbo.json',function(data){
 
 		// 2、显示数据到页面上
 		for(var i=0;i<data.length;i++){
@@ -303,13 +305,13 @@ $(function(){
 
 	//登录按钮
 	$('.header_cen_rg_top .dl').click(function(){
-		location.href = 'login.html';
+		// location.href = 'login.html';
 	})
 
 
 	//加入DR按钮
 	$('.header_cen_rg_top .join').click(function(){
-		location.href = 'register.html';
+		// location.href = 'register';
 	})
 
 
@@ -441,11 +443,11 @@ $(function(){
 
 
 	//主页大图跳转链接
-	$('.dr_dring a').attr('href','goodlist.html');
+	// $('.dr_dring a').attr('href','goodlist.html');
 
 	//头部左侧logo点击回到主页
 	$('.header_cen_lf img').click(function(){
-		location.href = 'index.html';
+		// location.href = 'index.html';
 	})
 
 
