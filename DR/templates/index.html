@@ -4,13 +4,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Darry Ring(DR真爱戒指)戴瑞珠宝官方网站 | 求婚钻戒领导品牌</title>
-	<link rel="stylesheet" href="{% static 'css/style1.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reset.css' %}">
-	<script src="{% static 'js/jquery-1.12.0.js' %}"></script>
-	<script src="{% static 'js/index.js' %}"></script>
-	<script src="{% static 'js/mask.js' %}"></script>
-	<script src="{% static 'js/banner.js' %}"></script>
-	<script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/style1.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}" >
+	<script src="{% static 'js/jquery-1.12.0.js' %}" ></script>
+{#    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>#}
+    <script src="{% static 'js/swiper.js' %}" ></script>
+	<script src="{% static 'js/index.js' %}" ></script>
+	<script src="{% static 'js/mask.js' %}" ></script>
+	<script src="{% static 'js/banner.js' %}" ></script>
+	<script src="{% static 'js/jquery.cookie.js' %}" ></script>
 
 </head>
 <body>
@@ -52,7 +55,7 @@
 					</ul>
 				</div>
 				<div class="header_cen_rg_bot">
-					<img src="{% static 'images/drus  vccmcdsmdsijhdhf     mrz.png' %}" alt="">
+					<img src="{% static 'images/drusvccmcdsmdsijhdhfmrz.png' %}" alt="">
 					<div class="info">
 						<select name="" id="">
 							<option value="中国大陆" selected="selected">中国大陆</option>
@@ -262,13 +265,28 @@
 
 	<!-- 轮播图 -->
 	<div class="banner">
-		<ul id="list">
+
 				<!-- <li><img src="images/2016-1.jpg" alt=""></li>
 				<li><img src="images/2016-2.jpg" alt=""></li>
 				<li><img src="images/2016-3.jpg" alt=""></li>
-				<li><img src="images/2016-4.jpg" alt=""></li>
- -->
-            <li><img src="{% static 'images/2016-1.jpg' %}" alt=""></li>
+				<li><img src="images/2016-4.jpg" alt=""></li> -->
+        <ul id="list">
+                <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                       <div class="swiper-slide" ><img src="{% static 'images/2016-1.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-2.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-3.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-4.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-5.jpg' %}" alt=""></div>
+                        <div class="swiper-slide" ><img src="{% static 'images/2016-1.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-2.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-3.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-4.jpg' %}" alt=""></div>
+                        <div class="swiper-slide"><img src="{% static 'images/2016-5.jpg' %}" alt=""></div>
+
+                </div>
+            </div>
         </ul>
 
 		<ul id="list2">
@@ -278,8 +296,8 @@
 {#				<li>4</li>#}
 		</ul>
 
-			<div id="pre"><a href="#1"><img src="{% static 'images/leftbig.png' %}" alt=""></a></div>
-			<div id="next"><a href="#1"><img src="{% static 'images/rightbig.png' %}" alt=""></a></div>
+{#			<div id="pre"><a href="#1"><img src="{% static 'images/leftbig.png' %}" alt=""></a></div>#}
+{#			<div id="next"><a href="#1"><img src="{% static 'images/rightbig.png' %}" alt=""></a></div>#}
 	</div>
 	<!-- 轮播图 -->
 

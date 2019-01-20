@@ -147,37 +147,61 @@ $(function(){
 		}
 	})
 
-	
+
+//登录ajax
+// 		$('.loginbtn').click(function() {
+//
+//         	$.ajax({
+// 				"url":'login',
+// 				'type':'post',
+// 				'date':{
+//
+// 					"name":$('.user').atr('name'),
+//
+// 				},
+// 				"dataType":"json",
+// 				then:function (data) {
+// 				alert(1)
+//                 }
+//
+// 				}
+// 			)
+//
+// 		});
+
+
+
+
 	// 登录--判断用户是否存在于cookie中，有就可以登录
-	$('.loginbtn').click(function(){
-		var users = $.cookie('users');
-		console.log(users);
-
-		if(users){
-			//反序列化，将json字符串转成对象
-		    users = JSON.parse(users);
-			
-			//遍历查找是否有匹配的用户
-			var isExit = false;//表示是否存在该用户
-			for(var i=0;i<users.length;i++){
-				if($('.login .user').val() == users[i].name && $('.login .pwd').val() == users[i].pwd){
-					console.log('登陆成功');
-					isExit = true;
-
-					//保存最新登录的用户名
-					$.cookie("loginUser", users[i].name, {expires:22, path:"/"});
-					console.log($.cookie("loginUser"))
-					location.href = 'index.html';//跳转到首页并将用户名传递过去
-				}
-			}
-			if(!isExit){
-				alert('用户名或密码不正确，请重新输入！');
-				return;
-			}
-
-		}else{
-			alert('请输入正确的账号密码！');
-		}
+	// $('.loginbtn').click(function(){
+	// 	var users = $.cookie('users');
+	// 	console.log(users);
+    //
+	// 	if(users){
+	// 		//反序列化，将json字符串转成对象
+	// 	    users = JSON.parse(users);
+	//
+	// 		//遍历查找是否有匹配的用户
+	// 		var isExit = false;//表示是否存在该用户
+	// 		for(var i=0;i<users.length;i++){
+	// 			if($('.login .user').val() == users[i].name && $('.login .pwd').val() == users[i].pwd){
+	// 				console.log('登陆成功');
+	// 				isExit = true;
+    //
+	// 				//保存最新登录的用户名
+	// 				$.cookie("loginUser", users[i].name, {expires:22, path:"/"});
+	// 				console.log($.cookie("loginUser"))
+	// 				location.href = 'index.html';//跳转到首页并将用户名传递过去
+	// 			}
+	// 		}
+	// 		if(!isExit){
+	// 			alert('用户名或密码不正确，请重新输入！');
+	// 			return;
+	// 		}
+    //
+	// 	}else{
+	// 		alert('请输入正确的账号密码！');
+	// 	}
 
 	// if($('input.user').val() == '' || $('input.pwd').val()){
 	// 		$('.info').slideDown(200).text('请先输入账号密码在登录！');
@@ -187,12 +211,12 @@ $(function(){
 	// 		return false;
 	// 	}
 
-	})
+	//})
 
 		// 随机色函数
 		function color(){
 			return "rgba("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+",1)"
-		}
+		};
 
 
-})
+});

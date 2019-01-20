@@ -4,29 +4,29 @@ $(function(){
 
 	// var goodId = location.search.splice(1);
 	// 获取该商品的id，唯一
-	var ID = location.search.replace("?","");
-	var goodId = ID.substring(0);
-	var userName = ID.substring(8);
-	console.log(userName);
-	console.log(goodId);
-
-		if( goodId=="" ){
-			alert("没有产品")
-		}else{
-			goodOp(goodId); 
-		}
-
-		function goodOp(goodId){
-			$.get({
-				"url":"json/goodlist.json",
-				"success":function(res){
-					
-					//res 是ajax请求成功时的返回值
-					//刷新页面  更新详情
-					callback(res);
-				}
-			})
-		}
+	// var ID = location.search.replace("?","");
+	// var goodId = ID.substring(0);
+	// var userName = ID.substring(8);
+	// console.log(userName);
+	// console.log(goodId);
+    //
+	// 	if( goodId=="" ){
+	// 		alert("没有产品")
+	// 	}else{
+	// 		goodOp(goodId);
+	// 	}
+    //
+	// 	function goodOp(goodId){
+	// 		$.get({
+	// 			"url":"json/goodlist.json",
+	// 			"success":function(res){
+	//
+	// 				//res 是ajax请求成功时的返回值
+	// 				//刷新页面  更新详情
+	// 				callback(res);
+	// 			}
+	// 		})
+	// 	}
 
 
 	    // 获取数据显示商品详情
@@ -131,17 +131,17 @@ $(function(){
 								cp3Node.appendTo(byright_center);
 
 
-								// 从json中获取点击轮播图以及跳转链接
-								for(var x=0;x<arr.length;x++){
-									console.log('i='+i+' , x='+x)
-									var liNode = $('<li/>');
-									var aNode = $('<a href=goodlist.html?'+goodId+'><img src='+arr[x].src+'></a>');
-									var pNode = $('<p/>').text(arr[x].discript);
-
-									liNode.append(aNode);
-									liNode.append(pNode);
-									liNode.appendTo($('.record_banner ul'));
-								}
+								// // 从json中获取点击轮播图以及跳转链接
+								// for(var x=0;x<arr.length;x++){
+								// 	console.log('i='+i+' , x='+x)
+								// 	var liNode = $('<li/>');
+								// 	var aNode = $('<a href=goodlist.html?'+goodId+'><img src='+arr[x].src+'></a>');
+								// 	var pNode = $('<p/>').text(arr[x].discript);
+                                //
+								// 	liNode.append(aNode);
+								// 	liNode.append(pNode);
+								// 	liNode.appendTo($('.record_banner ul'));
+								// }
 								// 从json中获取点击轮播图以及跳转链接
 
 							}	
@@ -255,55 +255,71 @@ $(function(){
 
 
 		// 点击加入购物车
+		// $('.byright_bottom .join').click(function(){
+		// 	if($('#size').val() == 0){
+		// 		alert('请选择尺寸');
+		// 		return false;
+		// 	}else{
+		// 		//获取之前保存在cookie中的购物车信息
+		// 		var arr = $.cookie("cart") ? JSON.parse( $.cookie("cart") ) : [];
+        //
+		// 		//要加入购物车的商品信息，从动态创建的对象中获取
+		// 		var goodRelated = $('.discript').text();//商品系列
+		// 		var goodPrice = $('.price').text();//商品价格
+		// 		var goodCutname = $('.cutname').val();//用户自定义刻字
+		// 		var chiCun = $('#size').val();//手寸
+		// 		var name = ""; //默认表示未登录
+		// 		if($.cookie('loginUser')){
+		// 			console.log('cookie中存了用户名：'+$.cookie('loginUser'));
+		// 			name = $.cookie('loginUser'); //如果登录了， 则name为登录的账户
+		// 		}
+        //
+		// 		// 遍历查找是否之前的购物车cookie中存在即将添加的商品
+		// 		var isExist = false;
+		// 		for(var i=0;i<arr.length;i++){
+		// 			if(goodId == arr[i].id && goodCutname == arr[i].cutname && chiCun == arr[i].chiCun){
+		// 				arr[i].num++;
+		// 				isExist = true;//表示存在该商品;
+		// 			}
+		// 		}
+        //
+		// 		// 如果不存在则添加一个商品
+		// 		if(!isExist){
+		// 			var goods = {
+		// 				id:goodId,
+		// 				script:goodRelated,
+		// 				price:goodPrice,
+		// 				cutname:goodCutname,
+		// 				chiCun:chiCun,
+		// 				userName:name,
+		// 				num:1
+		// 			}
+		// 			arr.push(goods);//push():向数组的末尾添加一个或更多元素，并返回新的长度。
+		// 		}
+        //
+		// 		// 保存到cookie中
+		// 		$.cookie("cart",JSON.stringify(arr),{expires:7,path:'/'});
+		// 		console.log( $.cookie("cart") );
+		// 	}
+		// 	//跳转到购物车页面
+		// 	// location.href = "shopcar.html";
+		// })
+
+
 		$('.byright_bottom .join').click(function(){
-			if($('#size').val() == 0){
-				alert('请选择尺寸');
-				return false;
-			}else{
-				//获取之前保存在cookie中的购物车信息
-				var arr = $.cookie("cart") ? JSON.parse( $.cookie("cart") ) : [];
+			alert($(this).attr('goodsid'))
+			$that = $(this)
+		$.get('../shopcar',{
+			'goodsid':$that.attr('goodsid')
 
-				//要加入购物车的商品信息，从动态创建的对象中获取
-				var goodRelated = $('.discript').text();//商品系列
-				var goodPrice = $('.price').text();//商品价格
-				var goodCutname = $('.cutname').val();//用户自定义刻字
-				var chiCun = $('#size').val();//手寸
-				var name = ""; //默认表示未登录
-				if($.cookie('loginUser')){
-					console.log('cookie中存了用户名：'+$.cookie('loginUser'));
-					name = $.cookie('loginUser'); //如果登录了， 则name为登录的账户
-				}
+		},function (response) {
 
-				// 遍历查找是否之前的购物车cookie中存在即将添加的商品
-				var isExist = false;
-				for(var i=0;i<arr.length;i++){
-					if(goodId == arr[i].id && goodCutname == arr[i].cutname && chiCun == arr[i].chiCun){
-						arr[i].num++;
-						isExist = true;//表示存在该商品;
-					}
-				}
+        })
 
-				// 如果不存在则添加一个商品
-				if(!isExist){
-					var goods = {
-						id:goodId,
-						script:goodRelated,
-						price:goodPrice,
-						cutname:goodCutname,
-						chiCun:chiCun,
-						userName:name,
-						num:1
-					}
-					arr.push(goods);//push():向数组的末尾添加一个或更多元素，并返回新的长度。
-				}
 
-				// 保存到cookie中
-				$.cookie("cart",JSON.stringify(arr),{expires:7,path:'/'});
-				console.log( $.cookie("cart") );
-			}
-			//跳转到购物车页面
-			location.href = "shopcar.html";
-		})
+
+
+		});
 
 
 

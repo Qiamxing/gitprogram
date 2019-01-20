@@ -1,5 +1,3 @@
-
-
 $(function(){
 
 	// 主页背景图片
@@ -29,7 +27,7 @@ $(function(){
 
 	// $('.allCity').empty()
 	// 获取 cityJSON 数据
-	$.getJSON("static/json/city.json",function(json){
+	$.getJSON("../../static/json/city.json",function(json){
 
 			//先遍历整个JSON，每一个数组都是一个li，然后遍历该数组对象
 			for(var i=0;i<json.length;i++){
@@ -58,7 +56,7 @@ $(function(){
 
 
 
-		$.getJSON("static/json/index.json",function(json){
+		$.getJSON("../../static/json/index.json",function(json){
 
 			dl_nav = $('#nav li.dl_nav');//1
 			pro_nav = $('#nav li.pro_nav');//2
@@ -185,8 +183,8 @@ $(function(){
 			for(var i=0;i<json[0].length;i++){
 				
 				// $('.shop_nav a.a5').eq(i).text(json[3][i].title);
-				$('.brand_nav a.a6').eq(i).text(json[4][i].title).attr('href','goodlist.html');
-				$('.com_nav a.a7').eq(i).text(json[5][i].title).attr('href','goodlist.html');
+				$('.brand_nav a.a6').eq(i).text(json[4][i].title).attr('href','../goodlist');
+				$('.com_nav a.a7').eq(i).text(json[5][i].title).attr('href','../goodlist');
 				$('img.d1').eq(i).attr('src',json[0][i].src);
 				// $('img.d5').eq(i).attr('src',json[3][i].src);
 				$('img.d6').eq(i).attr('src',json[4][i].src);
@@ -212,7 +210,7 @@ $(function(){
 						$(this).removeClass('add');
 					},
 					'click':function(){
-						location.href = json[$(pro_nav).index()][$(this).index()].href;
+						location.href = '../goodlist'
 					}
 				})
 			})
@@ -231,7 +229,7 @@ $(function(){
 						$(this).removeClass('add');
 					},
 					'click':function(){
-						location.href = json[$(pro_nav).index()][$(this).index()].href;
+						location.href ='../' + json[$(pro_nav).index()][$(this).index()].href;
 					}
 				})
 			});
@@ -254,7 +252,7 @@ $(function(){
 						$(this).removeClass('add');
 					},
 					'click':function(){
-						location.href = json[$(gift_nav).index()][$(this).index()].href;
+						location.href = '../' + json[$(gift_nav).index()][$(this).index()].href;
 					}
 				})
 			})
@@ -273,7 +271,7 @@ $(function(){
 						$(this).removeClass('add');
 					},
 					'click':function(){
-						location.href = json[$(gift_nav).index()][$(this).index()].href;
+						location.href = '../'+json[$(gift_nav).index()][$(this).index()].href;
 					}
 				})
 			});
@@ -283,7 +281,7 @@ $(function(){
 
 	/*轮播图*/
 	// 1.获取数据
-	$.get('static/json/lunbo.json',function(data){
+	$.get('../../static/json/lunbo.json',function(data){
 
 		// 2、显示数据到页面上
 		for(var i=0;i<data.length;i++){
@@ -301,17 +299,33 @@ $(function(){
 		banner();
 	})
 	/*轮播图*/
+    // var swiper = new Swiper('.swiper-container', {
+    //   effect: 'coverflow',
+    //   grabCursor: true,
+    //   centeredSlides: true,
+    //   slidesPerView: 'auto',
+    //   coverflowEffect: {
+    //     rotate: 50,
+    //     stretch: 0,
+    //     depth: 100,
+    //     modifier: 1,
+    //     slideShadows : true,
+    //   },
+    //   pagination: {
+    //     el: '.swiper-pagination',
+    //   },
+    // });
 
 
 	//登录按钮
 	$('.header_cen_rg_top .dl').click(function(){
-		// location.href = 'login.html';
+		 location.href = '../login';
 	})
 
 
 	//加入DR按钮
 	$('.header_cen_rg_top .join').click(function(){
-		// location.href = 'register';
+		 location.href = '../register';
 	})
 
 
@@ -447,24 +461,24 @@ $(function(){
 
 	//头部左侧logo点击回到主页
 	$('.header_cen_lf img').click(function(){
-		// location.href = 'index.html';
+		 location.href = '../';
 	})
 
 
 	// ============ 登录成功后首页显示用户名 ==================
-	console.log($.cookie('loginUser'));
-	var userName = location.search.replace("?","");
-	console.log(userName);
-	var name = userName.substring(6); 
-
-	// 判断cookie中是否有登录的用户名
-	if($.cookie('loginUser')){
-		var loginUser = $.cookie('loginUser');
-		$('.header_cen_rg_top ul li.dl').text("Hi, "+ loginUser);
-	}
-	else {
-		$('.header_cen_rg_top ul li.dl').text("登录");
-	}
+	// console.log($.cookie('loginUser'));
+	// var userName = location.search.replace("?","");
+	// console.log(userName);
+	// var name = userName.substring(6);
+    //
+	// // 判断cookie中是否有登录的用户名
+	// if($.cookie('loginUser')){
+	// 	var loginUser = $.cookie('loginUser');
+	// 	$('.header_cen_rg_top ul li.dl').text("Hi, "+ loginUser);
+	// }
+	// else {
+	// 	$('.header_cen_rg_top ul li.dl').text("登录");
+	// }
 	// ============== 登录成功后首页显示用户名 =================
 
 

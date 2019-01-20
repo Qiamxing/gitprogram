@@ -2,136 +2,136 @@
 	[
 		{
 			"title":"这是DR族",
-			"src":"static/images/drword.png"
+			"src":"../static/images/drword.png"
 		},
 		{
 			"title":"真爱查询",
-			"src":"static/images/drimg.jpg"
+			"src":"../static/images/drimg.jpg"
 		}
 	],
 	[
 		{
 			"title":"对戒2-1",
-			"src":"static/images/20150129121254e8cdb1d2f7.jpg",
-			"href":"goodlist"
+			"src":"../static/images/20150129121254e8cdb1d2f7.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"男戒2-2",
-			"src":"static/images/201502061050359c37df606b.jpg",
-			"href":"goodlist"
+			"src":"../static/images/201502061050359c37df606b.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"吊坠2-3",
-			"src":"static/images/20141211170306c60c5d8029.jpg",
-			"href":"goodlist"
+			"src":"../static/images/20141211170306c60c5d8029.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"耳饰2-4",
-			"src":"static/images/20150930142250b083bc9f9f.jpg",
-			"href":"goodlist"
+			"src":"../static/images/20150930142250b083bc9f9f.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"手镯/手链2-5",
-			"src":"static/images/20160315163555a3b5127646.jpg",
-			"href":"goodlist"
+			"src":"../static/images/20160315163555a3b5127646.jpg",
+			"href":"../goodlist"
 		}
 	],
 	[
 		{
 			"title":"对戒3-1",
-			"src":"static/images/201509301425347b86245a0e.jpg",
-			"href":"goodlist"
+			"src":"../static/images/201509301425347b86245a0e.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"男戒3-2",
-			"src":"static/images/201603151634299c0c326cab.jpg",
-			"href":"goodlist"
+			"src":"../static/images/201603151634299c0c326cab.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"吊坠3-3",
-			"src":"static/images/201603301518557a6da101e1.jpg",
-			"href":"goodlist"
+			"src":"../static/images/201603301518557a6da101e1.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"耳饰3-4",
-			"src":"static/images/201603301519256b9cccee8f.jpg",
-			"href":"goodlist"
+			"src":"../static/images/201603301519256b9cccee8f.jpg",
+			"href":"../goodlist"
 		},
 		{
 			"title":"手镯/手链3-5",
-			"src":"images/201605120949525d78060c25.jpg",
-			"href":"goodlist"
+			"src":"../images/201605120949525d78060c25.jpg",
+			"href":"../goodlist"
 		}
 	],
 	[
 		{
 			"title":"这是DR族",
-			"src":"goodlist"
+			"src":"../goodlist"
 		},
 		{
 			"title":"真爱查询",
-			"src":"goodlist"
+			"src":"../goodlist"
 		}
 	],
 	[
 		{
 			"title":"品牌文化",
-			"src":"goodlist"
+			"src":"../goodlist"
 		},
 		{
 			"title":"明星推荐",
-			"src":"goodlist"
+			"src":"../goodlist"
 		}
 	],
 	[
 		{
 			"title":"一封珍藏了一年的时光慢递",
-			"src":"static/images/1474875710.jpg"
+			"src":"../static/images/1474875710.jpg"
 		},
 		{
 			"title":"对不起我只要DR式的爱情",
-			"src":"static/images/1474875797.jpg"
+			"src":"../static/images/1474875797.jpg"
 		}
 	],
 	[
 		[
-			{"src":"static/images/20160728121840df1dceaa07.jpg"},
-			{"src":"static/images/201603301518557a6da101e1.jpg"},
-			{"src":"images/20160330151910e264570ec2.jpg"}
+			{"src":"../static/images/20160728121840df1dceaa07.jpg"},
+			{"src":"../static/images/201603301518557a6da101e1.jpg"},
+			{"src":"../static/images/20160330151910e264570ec2.jpg"}
 		],
 		[
-			{"src":"static/images/201603301518557a6da101e1.jpg"},
-			{"src":"static/images/20160330151910e264570ec2.jpg"},
-			{"src":"static/images/20160728121840df1dceaa07.jpg"}
+			{"src":"../static/images/201603301518557a6da101e1.jpg"},
+			{"src":"../static/images/20160330151910e264570ec2.jpg"},
+			{"src":"../static/images/20160728121840df1dceaa07.jpg"}
 		],
 		[
-			{"src":"static/images/20160728121840df1dceaa07.jpg"},
-			{"src":"static/images/201603301518557a6da101e1.jpg"},
-			{"src":"static/images/20160330151910e264570ec2.jpg"}
+			{"src":"../static/images/20160728121840df1dceaa07.jpg"},
+			{"src":"../static/images/201603301518557a6da101e1.jpg"},
+			{"src":"../static/images/20160330151910e264570ec2.jpg"}
 		],
 		[
-			{"src":"static/images/201603301518557a6da101e1.jpg"},
-			{"src":"static/images/20160330151910e264570ec2.jpg"},
-			{"src":"static/images/201603301518557a6da101e1.jpg"},
-			{"src":"static/images/20160330151910e264570ec2.jpg"}
+			{"src":"../static/images/201603301518557a6da101e1.jpg"},
+			{"src":"../static/images/20160330151910e264570ec2.jpg"},
+			{"src":"../static/images/201603301518557a6da101e1.jpg"},
+			{"src":"../static/images/20160330151910e264570ec2.jpg"}
 		]
 	],
 	[
 		{
 			"title":"香港店",
-			"src":"static/images/xianggang.jpg"
+			"src":"../static/images/xianggang.jpg"
 		},
 		{
 			"title":"全国实体店",
-			"src":"static/images/quanguo.jpg"
+			"src":"../static/images/quanguo.jpg"
 		},
 		{
 			"title":"重庆观音桥店",
-			"src":"static/images/chongq.jpg"
+			"src":"../static/images/chongq.jpg"
 		},
 		{
 			"title":"香港店",
-			"src":"static/images/xianggang.jpg"
+			"src":"../static/images/xianggang.jpg"
 		}
 	]
 ]

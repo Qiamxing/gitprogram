@@ -1,127 +1,210 @@
 
-$(function(){
+$(function() {
+	sum()
+	$('.add').click(
+		function () {
+    		$that = $(this)
+			$.get('../addcart/',{
 
-shopCar();
+				"cid":$that.attr('cid')
+			},function (response) {
+    			$that.parent().parent().find('em.number').html('<b>'+response.num+'</b>')
+				sum()
+
+            })
+        }
+
+    )
+	$('.rm').click(
+
+		function () {
+    		$that = $(this)
+
+			$.get('../rmcart/',{
+				"cid":$that.attr('cid')
+			},function (response) {
+    			$that.parent().parent().find('em.number').html('<b>'+response.num+'</b>')
+				if(response.num == '0'){
+    				$that.parent().parent().remove()
+
+				}
+				sum()
+            })
+        }
+
+    )
+	$('.remove').click(
+
+		function () {
+    		$that = $(this)
+
+			$.get('../removecart/',{
+				"cid":$that.attr('cid')
+			},function (response) {
+
+				$that.parent().parent().remove()
+				sum()
+            })
+        }
+
+    )
+	function sum() {
+		var num = 0
+		var sumb = 0
+
+		$('.cbx').each(
+			function () {
+
+				if($(this).prop("checked")){
+					num += 1
+					sumb += Number($(this).parent().find('.price').attr('price'))*Number($(this).parent().find('b').html())
+				}
+
+            }
+		)
+
+
+		$('.num').html(num)
+		$('.sum').html(sumb)
+
+    }
+	$('.cbx').change(function () {
+		sum()
+		$.get('../change/',{
+			"cid":$(this).attr('cid'),
+			'checked':$(this).prop('checked')
+		})
+    })
+
+	shopCar()
+
+})
 
 
 // ==================== 从cookie中获取数据并动态创建节点添加数据 ================
-function shopCar(){
-	
-	var name = ""; //默认表示未登录,name为空
-	if($.cookie('loginUser')){
-		console.log('cookie中存了用户名：'+$.cookie('loginUser'));
-		name = $.cookie('loginUser'); //如果登录了， 则name为登录的账户
-	}
-	
-	$('.show').empty();// 先清空列表内所有内容，因为每次都是从cookie中重新获取数据，重新添加一次数据
+function shopCar() {
 
-	/* 
-	错误提示：Uncaught SyntaxError: Unexpected token u
-		检查js代码中是否含有json解析的代码
-		如JSON.parse，JSON.parse在传参数是未定义时会出现该异常
-	*/
-	var _cookie = $.cookie("cart");//为防止清空cookie后，出现未定义 JSON解析
-		console.log(_cookie);//打印的这个cookie是 -- ‘字符串’
-
-	if(_cookie){
-		 _cookie = JSON.parse(_cookie);//从JSON中获取数据并转换成对象，反序列化
-
-		 if (_cookie.length > 0) {//JSON解析之后的_cookie才是 [数组对象]，才能通过长度来判断
-		 	console.log(_cookie);
-			var show = $('.show');
-			var num = 0;//商品个数
-			var sum = 0;//商品总价
-
-			$.getJSON("json/goodlist.json",function(json){//从商品列表的JSON中获取数据
-
-				for(var i=0;i<_cookie.length;i++){//遍历cookie中的数据
-					console.log(_cookie[i].userName);
-					var id = _cookie[i].id;
-
-					if(_cookie[i].userName == name){//name = ""时，表示无账号登录，name=$('loginUser')时,表示指定用户登录，创建指定用户的cookie
-
-						for(var j=0;j<json.length;j++){//遍历JSON中的数据
-							var arr = json[j];
-							for(var x=0;x<arr.length;x++){//遍历JSON中的每一个对象
-								var obj = arr[x];
-
-								if(obj.id == _cookie[i].id ){//匹配对应id，并创建对应节点获取相应的信息
-
-									//console.log(obj.id)
-									// 创建节点
-									var shoplist = $('<div/>').addClass('shoplist');
-									var inputNode = $('<input/>').attr('type','checkbox');
-									var sp = $('<span/>').addClass('sp');
-									var img = $('<img/>').attr('src',obj.src).on('click',function(){
-										location.href = 'goodinfo.html?'+ id;
-									});
-									var aNode = $('<a/>').text(obj.title);
-									var number = $('<em class="number"><b>'+_cookie[i].num+' 件</b></em>');
-
-									// 如果cookie中取出来的价格和指定价格相同，则执行相应函数
-									if(_cookie[i].price == obj.price1){
-										var cz = $('<span/>').addClass('cz').text(obj.material1);
-									}else if(_cookie[i].price == obj.price2){
-										var cz = $('<span/>').addClass('cz').text(obj.material2);
-									}else{
-										var cz = $('<span/>').addClass('cz').text("PTV");
-									}
-									
-									var cc = $('<span/>').addClass('cc').text(_cookie[i].chiCun);
-
-									// 如果没有刻字，默认 无
-									if(_cookie[i].cutname == ''){
-										var kz = $('<span/>').addClass('kz').text('无');
-									}else{
-										var kz = $('<span/>').addClass('kz').text(_cookie[i].cutname);
-									}
-									var price = $('<span/>').addClass('price').text(_cookie[i].price);
-									var close = $("<span/>").addClass('close');
-
-									sp.append(img);
-									sp.append(aNode);
-									sp.append(number);
-									inputNode.appendTo(shoplist);
-									sp.appendTo(shoplist);
-									cz.appendTo(shoplist);
-									cc.appendTo(shoplist);
-									kz.appendTo(shoplist);
-									price.appendTo(shoplist);
-									close.appendTo(shoplist);
-									shoplist.appendTo(show);
-								}	
-							}
-						}
-
-						// 获取购物车中商品总数
-						num += _cookie[i].num;
-						$('.num').html(num);
-
-						// 总计 --计算商品总价值
-						sum+=parseInt(_cookie[i].price * _cookie[i].num);
-						$('.sum').html(sum);
-					}
-
-					//继续购买
-					$('.gobuy').click(function(){
-						location.href = 'goodlist.html';
-					})
-				}
-				//点击结算弹出遮罩层
-				$('body').on('click','.statement .count',function(){
-					popUp(num,sum);
-					return false;
-				})
-			});
-		 }
-		else{
-			$('.num').text(' 零 ');
-			$('.sum').text('￥ 0');
-			num = 0;
-			sum = 0;
-		}
-	}
 }
+
+
+
+
+
+	// var name = ""; //默认表示未登录,name为空
+	// if($.cookie('loginUser')){
+	// 	console.log('cookie中存了用户名：'+$.cookie('loginUser'));
+	// 	name = $.cookie('loginUser'); //如果登录了， 则name为登录的账户
+	// }
+	//
+	// $('.show').empty();// 先清空列表内所有内容，因为每次都是从cookie中重新获取数据，重新添加一次数据
+    //
+	// /*
+	// 错误提示：Uncaught SyntaxError: Unexpected token u
+	// 	检查js代码中是否含有json解析的代码
+	// 	如JSON.parse，JSON.parse在传参数是未定义时会出现该异常
+	// */
+	// var _cookie = $.cookie("cart");//为防止清空cookie后，出现未定义 JSON解析
+	// 	console.log(_cookie);//打印的这个cookie是 -- ‘字符串’
+    //
+	// if(_cookie){
+	// 	 _cookie = JSON.parse(_cookie);//从JSON中获取数据并转换成对象，反序列化
+    //
+	// 	 if (_cookie.length > 0) {//JSON解析之后的_cookie才是 [数组对象]，才能通过长度来判断
+	// 	 	console.log(_cookie);
+	// 		var show = $('.show');
+	// 		var num = 0;//商品个数
+	// 		var sum = 0;//商品总价
+    //
+	// 		$.getJSON("json/goodlist.json",function(json){//从商品列表的JSON中获取数据
+    //
+	// 			for(var i=0;i<_cookie.length;i++){//遍历cookie中的数据
+	// 				console.log(_cookie[i].userName);
+	// 				var id = _cookie[i].id;
+    //
+	// 				if(_cookie[i].userName == name){//name = ""时，表示无账号登录，name=$('loginUser')时,表示指定用户登录，创建指定用户的cookie
+    //
+	// 					for(var j=0;j<json.length;j++){//遍历JSON中的数据
+	// 						var arr = json[j];
+	// 						for(var x=0;x<arr.length;x++){//遍历JSON中的每一个对象
+	// 							var obj = arr[x];
+    //
+	// 							if(obj.id == _cookie[i].id ){//匹配对应id，并创建对应节点获取相应的信息
+    //
+	// 								//console.log(obj.id)
+	// 								// 创建节点
+	// 								var shoplist = $('<div/>').addClass('shoplist');
+	// 								var inputNode = $('<input/>').attr('type','checkbox');
+	// 								var sp = $('<span/>').addClass('sp');
+	// 								var img = $('<img/>').attr('src',obj.src).on('click',function(){
+	// 									location.href = 'goodinfo.html?'+ id;
+	// 								});
+	// 								var aNode = $('<a/>').text(obj.title);
+	// 								var number = $('<em class="number"><b>'+_cookie[i].num+' 件</b></em>');
+    //
+	// 								// 如果cookie中取出来的价格和指定价格相同，则执行相应函数
+	// 								if(_cookie[i].price == obj.price1){
+	// 									var cz = $('<span/>').addClass('cz').text(obj.material1);
+	// 								}else if(_cookie[i].price == obj.price2){
+	// 									var cz = $('<span/>').addClass('cz').text(obj.material2);
+	// 								}else{
+	// 									var cz = $('<span/>').addClass('cz').text("PTV");
+	// 								}
+	//
+	// 								var cc = $('<span/>').addClass('cc').text(_cookie[i].chiCun);
+    //
+	// 								// 如果没有刻字，默认 无
+	// 								if(_cookie[i].cutname == ''){
+	// 									var kz = $('<span/>').addClass('kz').text('无');
+	// 								}else{
+	// 									var kz = $('<span/>').addClass('kz').text(_cookie[i].cutname);
+	// 								}
+	// 								var price = $('<span/>').addClass('price').text(_cookie[i].price);
+	// 								var close = $("<span/>").addClass('close');
+    //
+	// 								sp.append(img);
+	// 								sp.append(aNode);
+	// 								sp.append(number);
+	// 								inputNode.appendTo(shoplist);
+	// 								sp.appendTo(shoplist);
+	// 								cz.appendTo(shoplist);
+	// 								cc.appendTo(shoplist);
+	// 								kz.appendTo(shoplist);
+	// 								price.appendTo(shoplist);
+	// 								close.appendTo(shoplist);
+	// 								shoplist.appendTo(show);
+	// 							}
+	// 						}
+	// 					}
+//
+// 						// 获取购物车中商品总数
+// 						num += _cookie[i].num;
+// 						$('.num').html(num);
+//
+// 						// 总计 --计算商品总价值
+// 						sum+=parseInt(_cookie[i].price * _cookie[i].num);
+// 						$('.sum').html(sum);
+// 					}
+//
+// 					//继续购买
+// 					$('.gobuy').click(function(){
+// 						location.href = 'goodlist.html';
+// 					})
+// 				}
+// 				//点击结算弹出遮罩层
+// 				$('body').on('click','.statement .count',function(){
+// 					popUp(num,sum);
+// 					return false;
+// 				})
+// 			});
+// 		  }
+// 		else{
+// 			$('.num').text(' 零 ');
+// 			$('.sum').text('￥ 0');
+// 			num = 0;
+// 			sum = 0;
+// 		}
+// 	}
+// }
 
 
 // ==================== 从cookie中获取数据并动态创建节点添加数据 ================
@@ -152,14 +235,14 @@ function shopCar(){
 				//-> [{2}, {3}] -> 重新覆盖原来的cookie
 
 				if(window.confirm('是否确认删除！')){//???? 点击一次弹出后面所有的：因为置于多层循环中会多次调用
-					var arrCookie = new Array();
-					var _index = $(this).closest('div.shoplist').index();//获取删除物品的下标
+					// var arrCookie = new Array();
+					// var _index = $(this).closest('div.shoplist').index();//获取删除物品的下标
 
-					arrCookie = JSON.parse($.cookie("cart"));//定义一个数组存储该cookie，然后操作该数组，最后将操作过后的数组重新覆盖原来的cookie即可	 
-					var removeCookie = arrCookie.splice(_index,1);//删除指定下标的cookie,removeCookie是被删除的条目
-
-					// 重新覆盖原来的cookie
-					$.cookie('cart',JSON.stringify(arrCookie),{expires:7,path:'/'});
+					// arrCookie = JSON.parse($.cookie("cart"));//定义一个数组存储该cookie，然后操作该数组，最后将操作过后的数组重新覆盖原来的cookie即可
+					// var removeCookie = arrCookie.splice(_index,1);//删除指定下标的cookie,removeCookie是被删除的条目
+                    //
+					// // 重新覆盖原来的cookie
+					// $.cookie('cart',JSON.stringify(arrCookie),{expires:7,path:'/'});
 
 					shopCar();//重新调用该函数，动态创建修改后的数据
 				}else{
@@ -171,62 +254,62 @@ function shopCar(){
 
 
 			/*============== 点击复选框删除指定信息 ==============*/			
-			//1、遍历所有的复选框，找到所有没有被选中的项，获取其下标，
-			//2、然后通过下标获取对应cookie中的对象，并一一添加到空数组arr1中
-			//3、将新数组重新覆盖原来的cookie
-			//4、调用shorCar()函数创建cookie中对象
+			// 1、遍历所有的复选框，找到所有没有被选中的项，获取其下标，
+			// 2、然后通过下标获取对应cookie中的对象，并一一添加到空数组arr1中
+			// 3、将新数组重新覆盖原来的cookie
+			// 4、调用shorCar()函数创建cookie中对象
 			$('.cbox').on('click',function(){
-				if(JSON.parse($.cookie('cart')).length == 0){
-					alert('购物车已清空，快去挑选商品吧！');
-					return;
-				}
+				// if(JSON.parse($.cookie('cart')).length == 0){
+				// 	alert('购物车已清空，快去挑选商品吧！');
+				// 	return;
+				// }
 
 				var arr1 = new Array();
 				$(':checkbox').each(function(){
 					if(!$(this).prop('checked')){
 						var index = $(this).closest('div.shoplist').index();
 						console.log(index);
-					 
-					 	arr1.push(JSON.parse($.cookie("cart"))[index]);
-					 	console.log(JSON.parse($.cookie("cart"))[index]);
+
+					 	// arr1.push(JSON.parse($.cookie("cart"))[index]);
+					 	// console.log(JSON.parse($.cookie("cart"))[index]);
 					}
 				});
-				$.cookie('cart',JSON.stringify(arr1),{expires:7,path:'/'});
+				// $.cookie('cart',JSON.stringify(arr1),{expires:7,path:'/'});
 				shopCar();
 
 
 			})
-			// console.log($.cookie('cart'));
+			console.log($.cookie('cart'));
 			/*============== 点击复选框删除指定信息 ==============*/
 		
 
 
 
 			// 登录成功后页面显示 用户名，先判断cookie中是否有用户名
-			if($.cookie('loginUser')){
-				var loginUser = $.cookie('loginUser');
-				$('.head-right span.my-dr').text("Hi, "+ loginUser);
-			}
-			else {
-				$('.header_cen_rg_top ul li.dl').text("我的DR");
-			}
-
-
-			// 点击退出 删除cookie中 loginUser
-			$("span.quit").on('click',function(){
-				$.cookie('loginUser','',{expires:-1,path:'/'});
-				location.href = 'index.html';
-				console.log('popopopopopop')
-			})
-
-
-			$('.header .logo img').click(function(){
-				location.href = 'index.html';
-			})
-
-
-
-})
+// 			if($.cookie('loginUser')){
+// 				var loginUser = $.cookie('loginUser');
+// 				$('.head-right span.my-dr').text("Hi, "+ loginUser);
+// 			}
+// 			else {
+// 				$('.header_cen_rg_top ul li.dl').text("我的DR");
+// 			}
+//
+//
+// 			// 点击退出 删除cookie中 loginUser
+// 			$("span.quit").on('click',function(){
+// 				$.cookie('loginUser','',{expires:-1,path:'/'});
+// 				location.href = 'index.html';
+// 				console.log('popopopopopop')
+// 			})
+//
+//
+// 			$('.header .logo img').click(function(){
+// 				location.href = 'index.html';
+// 			})
+//
+//
+//
+// })
 
 			// ================== 点击立即结算弹出层 ===================
 
@@ -261,7 +344,7 @@ function shopCar(){
 				})
 
 				span1Node.on('click',function(){
-					location.href = 'goodlist.html';
+					location.href = '../goodlist.html';
 				})	
 				span2Node.on('click',function(){
 					if($.cookie('loginUser')){

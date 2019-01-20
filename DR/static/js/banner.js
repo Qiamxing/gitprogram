@@ -1,4 +1,9 @@
 
+function banner(){
+
+
+        }
+
 
 /*轮播图*/
 	function banner(){
@@ -39,7 +44,7 @@
 			//动画移动核心代码
 			_list1.stop().animate({left:-i*iWidth},1000);
 
-			
+
 			// 更改按钮的选中状态
 			_li2.eq(i).removeClass().addClass("active");
 			//添加样式之前先清除样式
@@ -88,3 +93,4 @@
 		)
 }
 		/*轮播图*/
+

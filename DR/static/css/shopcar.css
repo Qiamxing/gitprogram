@@ -320,13 +320,33 @@ p.shop_bottom_second,p.shop_bottom_third{
 .shoplist span.price{
 	width: 90px;
 }
+/*.shoplist span.close{*/
+	/*border-right: none;*/
+	/*!*width: 20px;*!*/
+	/*width: 40px;*/
+	/*margin-left: 10px;*/
+	/*height: 20px;*/
+	/*cursor: pointer;*/
+	/*!*background: url('../../static/images/small_tb.png') no-repeat 0px -87px;*!*/
+	/*background: url('../../static/images/small_tb.png') no-repeat 0px 0px;*/
+/*}*/
 .shoplist span.close{
 	border-right: none;
-	width: 20px;
+	width: 40px;
 	margin-left: 10px;
 	height: 20px;
 	cursor: pointer;
-	background: url('../images/small_tb.png') no-repeat 0px -87px;
+	margin-bottom: 5px;
+
+}
+.remove{
+	background: url('../../static/images/small_tb.png') no-repeat 0px -87px;
+}
+.add{
+	background: url('../../static/images/small_tb.png') no-repeat 0px -127px;
+}
+.rm{
+	background: url('../../static/images/small_tb.png') no-repeat 0px -107px;
 }
 /*添加新的商品*/
 

@@ -4,15 +4,14 @@
 <head> 
 	<meta charset="UTF-8">
 	<title>goodslist</title>
-	<link rel="stylesheet" href="{% static 'css/style1.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reset.css' %}">
-	<link rel="stylesheet" href="{% static 'css/goodlist.css' %}">
-	<script src={% static 'js/jquery-1.12.0.js' %}></script>
-	<script src="{% static 'js/index.js' %}"></script>
-	<script src="{% static 'js/index.js' %}"></script>
-	<script src="{% static 'js/banner.js' %}"></script>
-	<script src="{% static 'js/jquery.cookie.js' %}"></script>
-    <script src="{% static 'js/home.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/style1.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/goodlist.css' %}" >
+	<script src={% static 'js/jquery-1.12.0.js' %} ></script>
+	<script src="{% static 'js/index.js' %}" ></script>
+	<script src="{% static 'js/banner.js' %}" ></script>
+	<script src="{% static 'js/jquery.cookie.js' %}" ></script>
+
 </head>
 <body>
 <!-- 头部 -->
@@ -24,7 +23,12 @@
 			<div class="header_cen_rg">
 				<div class="header_cen_rg_top">
 					<ul>
-						<li class="dl">登录</li>
+						{% if name %}
+                            <a href="#"><li >{{ name }}</li></a>
+                            <a href="{% url 'dr:logout' %}"><li >logout</li></a>
+                        {% else %}
+                            <a href="{% url 'dr:login' %}"><li class="dl">登录</li></a>
+                        {% endif %}
 						<li class="join"><a href="#">加入DR族</a></li>
 						<li class="num"> 400 01 13520</li>
 						<li class="mobile">DR族APP
@@ -372,6 +376,23 @@
 						<i class="sale">已售:12341</i>
 						<i class="com">评价：76</i>
 				</li> -->
+
+                {% for goods in goodslist %}
+                    <li>
+					<a href="{% url 'dr:goodinfo' goods.id %}"><img src="{%  static goods.src %}" alt=""></a>
+					<div class="dring_thing-cort">
+						<h4 class="price">￥{{ goods.price }}</h4>
+						<p>TRUE LOVE系列 典雅 40分 F色</p>
+						<span class="save">收藏</span>
+						<span class="buy">立即购买</span>
+					</div>
+						<i class="sale">已售:{{ goods.sale }}</i>
+						<i class="com">评价：{{ goods.com }}</i>
+				</li>
+
+                {% endfor %}
+
+
 			</ul>
 			<!-- list -->
 				<ul class="pageC">

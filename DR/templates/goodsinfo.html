@@ -4,14 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>戴瑞主页</title>
-    <script src="{% static 'js/jquery-1.12.0.js' %}"></script>
-	<link rel="stylesheet" href="{% static 'css/style1.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reset.css' %}">
-	<link rel="stylesheet" href="{% static 'css/goodsinfo.css' %}">
+    <script src="{% static 'js/jquery-1.12.0.js' %}" ></script>
+	<link rel="stylesheet" href="{% static 'css/style1.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/goodsinfo.css' %}" >
 
-	<script src="{% static 'js/index.js' %}"></script>
-	<script src="{% static 'js/goodinfo.js' %}"></script>
-	<script src="{% static 'js/banner.js' %}"></script>
+	<script src="{% static 'js/index.js' %}" ></script>
+	<script src="{% static 'js/goodinfo.js' %}" ></script>
+	<script src="{% static 'js/banner.js' %}" ></script>
 
 </head>
 <body>
@@ -24,7 +24,12 @@
 			<div class="header_cen_rg">
 				<div class="header_cen_rg_top">
 					<ul>
-						<li class="dl">登录</li>
+						{% if name %}
+                            <a href="#"><li >{{ name }}</li></a>
+                            <a href="{% url 'dr:logout' %}"><li >logout</li></a>
+                        {% else %}
+                            <a href="{% url 'dr:login' %}"><li class="dl">登录</li></a>
+                        {% endif %}
 						<li class="join"><a href="#">加入DR族</a></li>
 						<li class="num"> 400 01 13520</li>
 						<li class="mobile">DR族APP

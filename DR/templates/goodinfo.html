@@ -4,14 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>戴瑞主页</title>
-	<link rel="stylesheet" href="{% static 'css/style1.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reset.css' %}">
-	<link rel="stylesheet" href="{% static 'css/goodsinfo.css' %}">
-	<script src={% static 'js/jquery-1.12.0.js' %}></script>
-	<script src="{% static 'js/index.js' %}"></script>
-	<script src="{% static 'js/goodinfo.js' %}"></script>
-	<script src="{% static 'js/banner.js' %}"></script>
-	<script src="{% static 'js/jquery.cookie.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/style1.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}" >
+	<link rel="stylesheet" href="{% static 'css/goodsinfo.css' %}" >
+	<script src={% static 'js/jquery-1.12.0.js' %} ></script>
+	<script src="{% static 'js/index.js' %}" ></script>
+	<script src="{% static 'js/goodinfo.js' %}" ></script>
+	<script src="{% static 'js/banner.js' %}" ></script>
+	<script src="{% static 'js/jquery.cookie.js' %}" ></script>
 
 </head> 
 <body>
@@ -25,7 +25,12 @@
 			<div class="header_cen_rg">
 				<div class="header_cen_rg_top">
 					<ul>
-						<li class="dl">登录</li>
+						{% if name %}
+                            <a href="#"><li >{{ name }}</li></a>
+                            <a href="{% url 'dr:logout' %}"><li >logout</li></a>
+                        {% else %}
+                            <a href="{% url 'dr:login' %}"><li class="dl">登录</li></a>
+                        {% endif %}
 						<li class="join"><a href="#">加入DR族</a></li>
 						<li class="num"> 400 01 13520</li>
 						<li class="mobile">DR族APP
@@ -271,15 +276,17 @@
 			<div class="buy_cort">
 				<div class="buycort_left fl">
 					<ul class="bc_left">
-						<!-- <li><img src="images/2015093019140361614ead1d.jpg" alt=""></li>
-						<li><img src="images/20150930191406bc384fe971.jpg" alt=""></li>
-						<li><img src="images/2015093019140702298d7dbb.jpg" alt=""></li>
-						<li><img src="images/20150930191409893f12c808.jpg" alt=""></li> -->
+{#						<li><img src="images/2015093019140361614ead1d.jpg" alt=""></li>#}
+{#						<li><img src="images/20150930191406bc384fe971.jpg" alt=""></li>#}
+{#						<li><img src="images/2015093019140702298d7dbb.jpg" alt=""></li>#}
+{#						<li><img src="images/20150930191409893f12c808.jpg" alt=""></li>#}
+                        <li><img src="{% static goods.src %}" alt=""></li>
 					</ul>
 				</div>
 				<div class="buycort_center fl">
 					<ul class="bc_center">
 						<li>
+                            <img src="{% static goods.src %}" alt="">
 							<!-- <img src="images/2015093019140361614ead1d.jpg" alt=""> -->
 							<span></span>
 						</li>
@@ -303,17 +310,18 @@
 				</div>
 
 				<div class="bigArea">
+{#                    <img src="{% static goods.name %}" alt="">#}
 						<!-- <img class="bigImg" src="images/2015093019140361614ead1d.jpg" alt=""> -->
 				</div>
 
 				<div class="buycort_right fl">
 					<div class="byright_top">
-						<!-- <p>Sweety系列 满天星耳钉[G03002]</p>
-						<p class="price"><span>￥2,599</span></p>
+						 <p>{{ goods.discript }}</p>
+						<p class="price"><span>￥{{ goods.price }}</span></p>
 						<p class="xq">
-							<i class="xq-sale">最近售出：3698</i>
-							<i class="xq-mod">用户评论：2 收藏人气：180</i>
-						</p> -->
+							<i class="xq-sale">最近售出：{{ goods.sale }}</i>
+							<i class="xq-mod">用户评论：{{ goods.com }} 收藏人气：{{ goods.sale }}</i>
+						</p>
 					</div>
 					<div class="byright_center">
 						<!-- <p class="cz">
@@ -362,7 +370,7 @@
 						<p class="gry">中国大陆用户付款后15个工作日内可收到货品,其它地区请咨询客服。</p>
 					</div>
 					<div class="byright_bottom">
-						<span class="join">加入购物车</span>
+						<span class="join" goodsid="{{ goods.id }}">加入购物车</span>
 						<span class="payfor">立即购买</span>
 					</div>
 

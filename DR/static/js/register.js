@@ -62,31 +62,31 @@ $(function(){
 			return;
 		}else{
 			// 获取之前保存的用户名
-			var users = $.cookie('users')?JSON.parse($.cookie('users')):[];
-
-			// 遍历users数组，判断是否存在该用户，如果存在则不能注册
-			for(var i=0;i<users.length;i++){
-				if($('.register_cont_phone .user').val() == users[i].name){
-					alert('该用户已存在，不能注册！');
-					return;
-				}
-			}
-
-			//将需要注册的用户保存到 cookie 中去，用对象存储
-			var user = {
-				name:$('.register_cont_phone .user').val(),
-				pwd:$('.register_cont_phone .pwd').val()
-			}
-			users.push(user);//添加新用户
-
-			//保存到cookie中去
-			$.cookie('users',JSON.stringify(users),{expires:7,path:'/'});
-			console.log($.cookie('users'));
-
-			//清空数据跳转到登陆界面
-			$('.register_cont_mail input').val('');
-			$('.register_cont_phone input').val('');
-			location.href = 'login.html';
+			// var users = $.cookie('users')?JSON.parse($.cookie('users')):[];
+            //
+			// // 遍历users数组，判断是否存在该用户，如果存在则不能注册
+			// for(var i=0;i<users.length;i++){
+			// 	if($('.register_cont_phone .user').val() == users[i].name){
+			// 		alert('该用户已存在，不能注册！');
+			// 		return;
+			// 	}
+			// }
+            //
+			// //将需要注册的用户保存到 cookie 中去，用对象存储
+			// var user = {
+			// 	name:$('.register_cont_phone .user').val(),
+			// 	pwd:$('.register_cont_phone .pwd').val()
+			// }
+			// users.push(user);//添加新用户
+            //
+			// //保存到cookie中去
+			// $.cookie('users',JSON.stringify(users),{expires:7,path:'/'});
+			// console.log($.cookie('users'));
+            //
+			// //清空数据跳转到登陆界面
+			// $('.register_cont_mail input').val('');
+			// $('.register_cont_phone input').val('');
+			// location.href = 'login.html';
 			alert('注册成功！');
 		}
 	})
@@ -119,39 +119,39 @@ $(function(){
 			return;
 		}else{
 			// 获取之前保存的用户名
-			var users = $.cookie('users')?JSON.parse($.cookie('users')):[];
-
-			// 遍历users数组，判断是否存在该用户，如果存在则不能注册
-			for(var i=0;i<users.length;i++){
-				if($('.register_cont_mail .user').val() == users[i].name){
-					alert('该用户已存在，不能注册！');
-					return;
-				}
-			}
+			// var users = $.cookie('users')?JSON.parse($.cookie('users')):[];
+            //
+			// // 遍历users数组，判断是否存在该用户，如果存在则不能注册
+			// for(var i=0;i<users.length;i++){
+			// 	if($('.register_cont_mail .user').val() == users[i].name){
+			// 		alert('该用户已存在，不能注册！');
+			// 		return;
+			// 	}
+			// }
 
 			//将需要注册的用户保存到 cookie 中去，用对象存储
-			var user = {
-				name:$('.register_cont_mail .user').val(),
-				pwd:$('.register_cont_mail .pwd').val()
-			}
-			users.push(user);//添加新用户
-
-			//保存到cookie中去
-			$.cookie('users',JSON.stringify(users),{expires:7,path:'/'});
-			console.log($.cookie('users'));
-
-			//清空数据跳转到登陆界面
-			$('.register_cont_mail input').val('');
-			$('.register_cont_phone input').val('');
-			location.href = 'login.html';
+			// var user = {
+			// 	name:$('.register_cont_mail .user').val(),
+			// 	pwd:$('.register_cont_mail .pwd').val()
+			// }
+			// users.push(user);//添加新用户
+            //
+			// //保存到cookie中去
+			// $.cookie('users',JSON.stringify(users),{expires:7,path:'/'});
+			// console.log($.cookie('users'));
+            //
+			// //清空数据跳转到登陆界面
+			// $('.register_cont_mail input').val('');
+			// $('.register_cont_phone input').val('');
+			// location.href = 'login.html';
 			alert('注册成功！');
 		}
 	})
 	// =======================用户注册===========================
 
 	//以后账户登录 
-	$('.other_login span').click(function(){
-		location.href = 'login.html'
-	})
-	
+	// $('.other_login span').click(function(){
+	// 	location.href = 'login.html'
+	// })
+	//
 })
